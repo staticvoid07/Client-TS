@@ -2063,78 +2063,78 @@ export class Client extends GameShell {
                 this.cinemaCamera();
             }
 
-            for (let i: number = 0; i < 5; i++) {
-                this.camShakeCycle[i]++;
-            }
+            // for (let i: number = 0; i < 5; i++) {
+            //     this.camShakeCycle[i]++;
+            // }
 
             await this.handleInputKey();
 
-            if (now - this.idleCycle > 90_000) {
-                // no input in 90s, notify the server
-                //this.pendingLogout = 250;
-                //this.idleCycle += 10_000; // 10s backoff
+            // if (now - this.idleCycle > 90_000) {
+            //     // no input in 90s, notify the server
+            //     this.pendingLogout = 250;
+            //     this.idleCycle += 10_000; // 10s backoff
 
-                //this.out.pIsaac(ClientProt.IDLE_TIMER);
-            }
+            //     this.out.pIsaac(ClientProt.IDLE_TIMER);
+            // }
 
-            this.macroCameraCycle++;
-            if (this.macroCameraCycle > 500) {
-                this.macroCameraCycle = 0;
+            // this.macroCameraCycle++;
+            // if (this.macroCameraCycle > 500) {
+            //     this.macroCameraCycle = 0;
 
-                const rand: number = (Math.random() * 8.0) | 0;
-                if ((rand & 0x1) === 1) {
-                    this.macroCameraX += this.macroCameraXModifier;
-                }
-                if ((rand & 0x2) === 2) {
-                    this.macroCameraZ += this.macroCameraZModifier;
-                }
-                if ((rand & 0x4) === 4) {
-                    this.macroCameraAngle += this.macroCameraAngleModifier;
-                }
-            }
+            //     const rand: number = (Math.random() * 8.0) | 0;
+            //     if ((rand & 0x1) === 1) {
+            //         this.macroCameraX += this.macroCameraXModifier;
+            //     }
+            //     if ((rand & 0x2) === 2) {
+            //         this.macroCameraZ += this.macroCameraZModifier;
+            //     }
+            //     if ((rand & 0x4) === 4) {
+            //         this.macroCameraAngle += this.macroCameraAngleModifier;
+            //     }
+            // }
 
-            if (this.macroCameraX < -50) {
-                this.macroCameraXModifier = 2;
-            } else if (this.macroCameraX > 50) {
-                this.macroCameraXModifier = -2;
-            }
+            // if (this.macroCameraX < -50) {
+            //     this.macroCameraXModifier = 2;
+            // } else if (this.macroCameraX > 50) {
+            //     this.macroCameraXModifier = -2;
+            // }
 
-            if (this.macroCameraZ < -55) {
-                this.macroCameraZModifier = 2;
-            } else if (this.macroCameraZ > 55) {
-                this.macroCameraZModifier = -2;
-            }
+            // if (this.macroCameraZ < -55) {
+            //     this.macroCameraZModifier = 2;
+            // } else if (this.macroCameraZ > 55) {
+            //     this.macroCameraZModifier = -2;
+            // }
 
-            if (this.macroCameraAngle < -40) {
-                this.macroCameraAngleModifier = 1;
-            } else if (this.macroCameraAngle > 40) {
-                this.macroCameraAngleModifier = -1;
-            }
+            // if (this.macroCameraAngle < -40) {
+            //     this.macroCameraAngleModifier = 1;
+            // } else if (this.macroCameraAngle > 40) {
+            //     this.macroCameraAngleModifier = -1;
+            // }
 
-            this.macroMinimapCycle++;
-            if (this.macroMinimapCycle > 500) {
-                this.macroMinimapCycle = 0;
+            // this.macroMinimapCycle++;
+            // if (this.macroMinimapCycle > 500) {
+            //     this.macroMinimapCycle = 0;
 
-                const rand: number = (Math.random() * 8.0) | 0;
-                if ((rand & 0x1) === 1) {
-                    this.macroMinimapAngle += this.macroMinimapAngleModifier;
-                }
-                if ((rand & 0x2) === 2) {
-                    this.macroMinimapZoom += this.macroMinimapZoomModifier;
-                }
-            }
+            //     const rand: number = (Math.random() * 8.0) | 0;
+            //     if ((rand & 0x1) === 1) {
+            //         this.macroMinimapAngle += this.macroMinimapAngleModifier;
+            //     }
+            //     if ((rand & 0x2) === 2) {
+            //         this.macroMinimapZoom += this.macroMinimapZoomModifier;
+            //     }
+            // }
 
-            if (this.macroMinimapAngle < -60) {
-                this.macroMinimapAngleModifier = 2;
-            } else if (this.macroMinimapAngle > 60) {
-                this.macroMinimapAngleModifier = -2;
-            }
+            // if (this.macroMinimapAngle < -60) {
+            //     this.macroMinimapAngleModifier = 2;
+            // } else if (this.macroMinimapAngle > 60) {
+            //     this.macroMinimapAngleModifier = -2;
+            // }
 
-            if (this.macroMinimapZoom < -20) {
-                this.macroMinimapZoomModifier = 1;
-            } else if (this.macroMinimapZoom > 10) {
-                this.macroMinimapZoomModifier = -1;
-            }
+            // if (this.macroMinimapZoom < -20) {
+            //     this.macroMinimapZoomModifier = 1;
+            // } else if (this.macroMinimapZoom > 10) {
+            //     this.macroMinimapZoomModifier = -1;
+            // }
 
             if (now - this.noTimeoutCycle > 1_000) {
                 // nothing sent in the last 1s, keep the client connected
