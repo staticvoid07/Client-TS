@@ -995,7 +995,7 @@ export class Client extends GameShell {
             }
 
             World.init(512, 334, 500, 800, distance);
-            WordFilter.unpack(jagWordenc);
+            //WordFilter.unpack(jagWordenc);
 
             setInterval(() => {
                 this.mouseTracking.cycle();
@@ -3592,7 +3592,7 @@ export class Client extends GameShell {
                                 this.out.psize1(this.out.pos - start);
 
                                 this.socialInput = JString.toSentenceCase(this.socialInput);
-                                this.socialInput = WordFilter.filter(this.socialInput);
+                                //this.socialInput = WordFilter.filter(this.socialInput);
                                 this.addChat(6, this.socialInput, JString.formatName(JString.fromBase37(this.socialName37)));
 
                                 if (this.chatPrivateMode === 2) {
@@ -3746,7 +3746,7 @@ export class Client extends GameShell {
                                 this.out.psize1(this.out.pos - start);
 
                                 this.chatTyped = JString.toSentenceCase(this.chatTyped);
-                                this.chatTyped = WordFilter.filter(this.chatTyped);
+                                //this.chatTyped = WordFilter.filter(this.chatTyped);
 
                                 if (this.localPlayer && this.localPlayer.name) {
                                     this.localPlayer.chatMessage = this.chatTyped;
@@ -6855,7 +6855,7 @@ export class Client extends GameShell {
                         this.messageTextIds[this.privateMessageCount] = messageId;
                         this.privateMessageCount = (this.privateMessageCount + 1) % 100;
                         const uncompressed: string = WordPack.unpack(this.in, this.psize - 13);
-                        const filtered: string = WordFilter.filter(uncompressed);
+                        const filtered: string = uncompressed;//WordFilter.filter(uncompressed);
 
                         if (staffModLevel === 2 || staffModLevel === 3) {
                             this.addChat(7, filtered, '@cr2@' + JString.formatName(JString.fromBase37(from)));
@@ -8218,7 +8218,7 @@ export class Client extends GameShell {
                 if (!ignored && this.chatDisabled === 0) {
                     try {
                         const uncompressed: string = WordPack.unpack(buf, length);
-                        const filtered: string = WordFilter.filter(uncompressed);
+                        const filtered: string = uncompressed;//WordFilter.filter(uncompressed);
                         player.chatMessage = filtered;
                         player.chatColour = colourEffect >> 8;
                         player.chatEffect = colourEffect & 0xff;
